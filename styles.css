@@ -15,6 +15,11 @@ html {
     border-radius: 5px;
 }
 
+#brand {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .screen {
     width: 90%; 
     height: 35px; 
