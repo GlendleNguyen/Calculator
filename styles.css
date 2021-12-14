@@ -15,9 +15,28 @@ html {
 
 .screen {
     width: 96%; 
-    height: 25px; 
-    font-size: 150%;
+    height: 35px; 
+    font-size: 200%;
     background-color: lightgrey; 
     padding: 5px; 
     text-align: right;
+}
+
+button {
+    height: 50px;
+    width: 100%; 
+    border: 1px solid; 
+    border-radius: 5px;
+    font-size: 125%; 
+}
+
+#clear {
+    display: grid;
+    justify-content: end; 
+    grid-template-columns: 100px;
+}
+
+#buttons {
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
 }
