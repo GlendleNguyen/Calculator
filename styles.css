@@ -49,6 +49,7 @@ button:hover {
     grid-template-columns: 83px;
     padding-right: 15px; 
     padding-top: 15px; 
+    text-align: right;
 }
 
 #buttons {
