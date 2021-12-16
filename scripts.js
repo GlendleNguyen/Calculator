@@ -1,46 +1,43 @@
-let valueA = ''
-let valueB = ''
-let operatorValue = ''
-
 const clearButton = document.getElementById('clear')
 const display = document.getElementById('screen')
 const numbers = document.querySelectorAll('.number')
 const operators = document.querySelectorAll('.operator')
 
-clearButton.addEventListener('click', clear)
+clearButton.addEventListener('click', clearScreen)
 
-numbers.forEach(function (currentNumber) {
-    currentNumber.addEventListener('click', number)
-})
-operators.forEach(function (currentOperator) {
-    currentOperator.addEventListener('click', operator)
-})
+numbers.forEach((button) => 
+    button.addEventListener('click', () => inputNumber(button.value))
+)
 
-function clear() {
-    display.value = ""
+operators.forEach((button) => 
+    button.addEventListener('click', () => inputOperator(button.value))
+)
+
+function clearScreen() {
+    display.value = '0'
 }
 
-function number() {
-    if (operatorValue === '') {
-        valueA = this.value
-        appendValue(valueA)
+function inputNumber(number) {
+    if(display.value === '0') {
+        clearScreen
+        display.value = number
     } else {
-        valueA = this.value
-        clear()
-        appendValue(valueA)
+        display.value += number
     }
 }
 
-function operator() {
-    operatorValue = this.value
-    if (valueA === '') {
-        return 
-    } else {
-        clear()
-        appendValue(operatorValue)
-    }
-}
-
-function appendValue(value) {
-    display.value += value
-}
+function add(a, b) {
+    return a + b
+  }
+  
+  function substract(a, b) {
+    return a - b
+  }
+  
+  function multiply(a, b) {
+    return a * b
+  }
+  
+  function divide(a, b) {
+    return a / b
+  }
