@@ -29,6 +29,7 @@ equalsButton.addEventListener('click', equals)
 function clear() {
     currentValue.value = ''
     previousValues.value = ''
+    storedValue = ''
 }
 
 // Adds number button input to display
@@ -67,6 +68,17 @@ function equals() {
                 previousValues.value = storedValue
                 currentValue.value = ''
                 break
+
+            case 'x':
+                storedValue = multiply(parseInt(storedValue), parseInt(currentValue.value))
+                previousValues.value = storedValue
+                currentValue.value = ''
+                break
+            case '/':
+                storedValue = divide(parseInt(storedValue), parseInt(currentValue.value))
+                previousValues.value = storedValue
+                currentValue.value = ''
+                break
         }
     }
 }
@@ -77,4 +89,16 @@ function add(a, b) {
 
 function minus(a, b) {
     return a - b
+}
+
+function multiply(a, b) {
+    return a * b
+}
+
+function divide(a, b) {
+    if(b == 0) {
+        clear
+    } else {
+        return a / b
+    }
 }
