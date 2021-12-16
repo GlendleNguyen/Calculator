@@ -67,7 +67,7 @@ function operator(sign) {
 
 // Performs calculation based on operator
 function equals() {
-    if (storedValue != '' && currentOperator != null) {
+    if (storedValue != '' && currentOperator != null && currentValue.value != '') {
         switch (currentOperator) {
             case '+':
                 storedValue = add(parseFloat(storedValue), parseFloat(currentValue.value))
