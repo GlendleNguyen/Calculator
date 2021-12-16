@@ -82,12 +82,12 @@ function equals() {
                 break
 
             case 'x':
-                storedValue = multiply(parseFloat(storedValue), parseFloatt(currentValue.value))
+                storedValue = multiply(parseFloat(storedValue), parseFloat(currentValue.value))
                 previousValues.value = storedValue
                 currentValue.value = ''
                 break
             case '/':
-                storedValue = divide(parseFloat(storedValue), parseFloatt(currentValue.value))
+                storedValue = divide(parseFloat(storedValue), parseFloat(currentValue.value))
                 previousValues.value = storedValue
                 currentValue.value = ''
                 break
