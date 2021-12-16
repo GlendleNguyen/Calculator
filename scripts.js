@@ -1,43 +1,32 @@
+const numberButtons = document.querySelectorAll('[data-number]')
+const operatorButtons = document.querySelectorAll('[data-operator]')
+const equalsButton = document.getElementById('equals')
+const decimalButton = document.getElementById('decimal')
 const clearButton = document.getElementById('clear')
-const display = document.getElementById('screen')
-const numbers = document.querySelectorAll('.number')
-const operators = document.querySelectorAll('.operator')
+const previousValues = document.getElementById('previousScreen')
+const currentValue = document.getElementById('currentScreen')
 
-clearButton.addEventListener('click', clearScreen)
+/** 
+ * Event Listeners
+ */
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        appendNumber(button.value)
+    })
+})
+clearButton.addEventListener('click', clear)
 
-numbers.forEach((button) => 
-    button.addEventListener('click', () => inputNumber(button.value))
-)
-
-operators.forEach((button) => 
-    button.addEventListener('click', () => inputOperator(button.value))
-)
-
-function clearScreen() {
-    display.value = '0'
+// Clears all values
+function clear() {
+    currentValue.value = ''
+    previousValues.value = ''
 }
 
-function inputNumber(number) {
-    if(display.value === '0') {
-        clearScreen
-        display.value = number
+// Adds number button input to display
+function appendNumber(number) {
+    if(currentValue.value == '0') {
+        currentValue.value = number
     } else {
-        display.value += number
+        currentValue.value += number
     }
 }
-
-function add(a, b) {
-    return a + b
-  }
-  
-  function substract(a, b) {
-    return a - b
-  }
-  
-  function multiply(a, b) {
-    return a * b
-  }
-  
-  function divide(a, b) {
-    return a / b
-  }

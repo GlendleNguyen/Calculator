@@ -23,12 +23,20 @@ html {
 .screen {
     width: 90%; 
     height: 35px; 
-    font-size: 200%;
     background-color: lightgrey; 
     text-align: right;
-    margin-top: 15px; 
     margin-left: 10px; 
     padding-left: 15px; 
+}
+
+#previousScreen {
+    border-bottom: none;
+    font-size: 1.5rem;
+}
+
+#currentScreen {
+    border-top: none; 
+    font-size: 2.5rem;
 }
 
 button {
