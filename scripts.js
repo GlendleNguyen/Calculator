@@ -53,7 +53,7 @@ function operator(sign) {
     }
 }
 
-// Performs calculation 
+// Performs calculation based on operator
 function equals() {
     if (storedValue != '' && currentOperator != null) {
         switch (currentOperator) {
