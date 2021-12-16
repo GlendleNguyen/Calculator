@@ -24,6 +24,7 @@ operatorButtons.forEach(button => {
 })
 clearButton.addEventListener('click', clear)
 equalsButton.addEventListener('click', equals)
+decimalButton.addEventListener('click', appendDecimal)
 
 // Clears all values
 function clear() {
@@ -32,12 +33,23 @@ function clear() {
     storedValue = ''
 }
 
+// Adds a decimal if one doesn't already exist
+function appendDecimal() {
+    if (currentValue.value.includes(".")) {
+        return
+    } else {
+        currentValue.value += "."
+    }
+}
+
 // Adds number button input to display
 function appendNumber(number) {
     if (currentValue.value == '0') {
         currentValue.value = number
     } else {
-        currentValue.value += number
+        if (currentValue.value.length < 13) {
+            currentValue.value += number
+        }
     }
 }
 
@@ -58,24 +70,24 @@ function equals() {
     if (storedValue != '' && currentOperator != null) {
         switch (currentOperator) {
             case '+':
-                storedValue = add(parseInt(storedValue), parseInt(currentValue.value))
+                storedValue = add(parseFloat(storedValue), parseFloat(currentValue.value))
                 previousValues.value = storedValue
                 currentValue.value = ''
                 break
 
             case '-':
-                storedValue = minus(parseInt(storedValue), parseInt(currentValue.value))
+                storedValue = minus(parseFloat(storedValue), parseFloat(currentValue.value))
                 previousValues.value = storedValue
                 currentValue.value = ''
                 break
 
             case 'x':
-                storedValue = multiply(parseInt(storedValue), parseInt(currentValue.value))
+                storedValue = multiply(parseFloat(storedValue), parseFloatt(currentValue.value))
                 previousValues.value = storedValue
                 currentValue.value = ''
                 break
             case '/':
-                storedValue = divide(parseInt(storedValue), parseInt(currentValue.value))
+                storedValue = divide(parseFloat(storedValue), parseFloatt(currentValue.value))
                 previousValues.value = storedValue
                 currentValue.value = ''
                 break
@@ -96,7 +108,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if(b == 0) {
+    if (b == 0) {
         clear
     } else {
         return a / b
