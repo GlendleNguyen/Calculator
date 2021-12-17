@@ -60,6 +60,8 @@ function operator(sign) {
         currentValue.value = ''
         previousValues.value = storedValue
         currentOperator = sign
+    } else if (currentOperator == sign) {
+        equals(parseFloat(storedValue), parseFloat(currentValue.value))
     } else {
         currentOperator = sign
     }
