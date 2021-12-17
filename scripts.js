@@ -53,8 +53,9 @@ function appendNumber(number) {
     }
 }
 
-// Updates the operator being used
+// Updates the operator being used and performs equal function if conditions met
 function operator(sign) {
+    // No stored value 
     if (storedValue == '') {
         storedValue = currentValue.value
         currentValue.value = ''
@@ -62,6 +63,9 @@ function operator(sign) {
         currentOperator = sign
     } else if (currentOperator == sign) {
         equals(parseFloat(storedValue), parseFloat(currentValue.value))
+    } else if (currentOperator != sign && storedValue != '' && currentValue.value != '') {
+        equals(parseFloat(storedValue), parseFloat(currentValue.value))
+        currentOperator = sign
     } else {
         currentOperator = sign
     }
