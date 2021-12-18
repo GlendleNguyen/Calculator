@@ -122,7 +122,7 @@ function divide(a, b) {
     }
 }
 
-/** Extenstion to add a backspace button */
+/** Extension to add a backspace button */
 function backspace() {
     if (currentValue.value != '') {
         let oldValue = currentValue.value
