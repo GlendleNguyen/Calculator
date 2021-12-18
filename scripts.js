@@ -1,5 +1,4 @@
 let currentOperator = null
-let storedValue = ''
 
 const numberButtons = document.querySelectorAll('[data-number]')
 const operatorButtons = document.querySelectorAll('[data-operator]')
@@ -30,7 +29,7 @@ decimalButton.addEventListener('click', appendDecimal)
 function clear() {
     currentValue.value = ''
     previousValues.value = ''
-    storedValue = ''
+    currentOperator = null
 }
 
 // Adds a decimal if one doesn't already exist
@@ -53,52 +52,54 @@ function appendNumber(number) {
     }
 }
 
-// Updates the operator being used and performs equal function if conditions met
+// Updates the operator being used and calls equal function if conditions met
 function operator(sign) {
-    // No stored value 
-    if (storedValue == '') {
-        storedValue = currentValue.value
+      // move a 0 up and change the sign
+    if (currentValue.value == '' && previousValues.value == '') {
+        previousValues.value += '0'
+        currentOperator = sign
+        console.log("test 1")
+    } // move current value up and change the sign
+    else if (currentValue.value != '' && previousValues.value == '') {
+        currentOperator = sign
+        previousValues.value = currentValue.value
         currentValue.value = ''
-        previousValues.value = storedValue
+        console.log("test 2")
+    } // just change the sign
+    else if (currentValue.value == '' && previousValues.value != '') {
         currentOperator = sign
-    } else if (currentOperator == sign) {
-        equals(parseFloat(storedValue), parseFloat(currentValue.value))
-    } else if (currentOperator != sign && storedValue != '' && currentValue.value != '') {
-        equals(parseFloat(storedValue), parseFloat(currentValue.value))
+        console.log("test 3")
+    }
+    else if (currentValue.value != '' && previousValues.value != '') {
+        equals()
         currentOperator = sign
-    } else {
-        currentOperator = sign
+        console.log("test 4")
     }
 }
 
 // Performs calculation based on operator
 function equals() {
-    if (storedValue != '' && currentOperator != null && currentValue.value != '') {
-        switch (currentOperator) {
-            case '+':
-                storedValue = add(parseFloat(storedValue), parseFloat(currentValue.value))
-                previousValues.value = storedValue
-                currentValue.value = ''
-                break
+    switch (currentOperator) {
+        case '+':
+            previousValues.value = add(parseFloat(previousValues.value), parseFloat(currentValue.value))
+            currentValue.value = ''
+            break
 
-            case '-':
-                storedValue = minus(parseFloat(storedValue), parseFloat(currentValue.value))
-                previousValues.value = storedValue
-                currentValue.value = ''
-                break
+        case '-':
+            previousValues.value = minus(parseFloat(previousValues.value), parseFloat(currentValue.value))
+            currentValue.value = ''
+            break
 
-            case 'x':
-                storedValue = multiply(parseFloat(storedValue), parseFloat(currentValue.value))
-                previousValues.value = storedValue
-                currentValue.value = ''
-                break
-            case '/':
-                storedValue = divide(parseFloat(storedValue), parseFloat(currentValue.value))
-                previousValues.value = storedValue
-                currentValue.value = ''
-                break
-        }
+        case 'x':
+            previousValues.value = multiply(parseFloat(previousValues.value), parseFloat(currentValue.value))
+            currentValue.value = ''
+            break
+        case '/':
+            previousValues.value = divide(parseFloat(previousValues.value), parseFloat(currentValue.value))
+            currentValue.value = ''
+            break
     }
+
 }
 
 function add(a, b) {
@@ -115,6 +116,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if (b == 0) {
+        console.log("dividing by 0")
         clear
     } else {
         return a / b
