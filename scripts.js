@@ -58,22 +58,18 @@ function operator(sign) {
     if (currentValue.value == '' && previousValues.value == '') {
         previousValues.value += '0'
         currentOperator = sign
-        console.log("test 1")
     } // move current value up and change the sign
     else if (currentValue.value != '' && previousValues.value == '') {
         currentOperator = sign
         previousValues.value = currentValue.value
         currentValue.value = ''
-        console.log("test 2")
     } // just change the sign
     else if (currentValue.value == '' && previousValues.value != '') {
         currentOperator = sign
-        console.log("test 3")
-    }
+    } // normal operation
     else if (currentValue.value != '' && previousValues.value != '') {
         equals()
         currentOperator = sign
-        console.log("test 4")
     }
 }
 
