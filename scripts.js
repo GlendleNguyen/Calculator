@@ -7,6 +7,7 @@ const decimalButton = document.getElementById('decimal')
 const clearButton = document.getElementById('clear')
 const previousValues = document.getElementById('previousScreen')
 const currentValue = document.getElementById('currentScreen')
+const deleteButton = document.getElementById('delete')
 
 /** 
  * Event Listeners
@@ -25,6 +26,7 @@ clearButton.addEventListener('click', clear)
 equalsButton.addEventListener('click', equals)
 decimalButton.addEventListener('click', appendDecimal)
 window.addEventListener('keydown', keyboardInput)
+deleteButton.addEventListener('click', backspace)
 
 // Clears all values
 function clear() {
@@ -120,6 +122,15 @@ function divide(a, b) {
     }
 }
 
+/** Extenstion to add a backspace button */
+function backspace() {
+    if (currentValue.value != '') {
+        let oldValue = currentValue.value
+        let newValue = oldValue.slice(0, -1)
+        currentValue.value = newValue
+    }
+}
+
 /** Extension to add keyboard input */
 function keyboardInput(e) {
     if (e.key >= 0 && e.key <= 9) {
@@ -133,5 +144,8 @@ function keyboardInput(e) {
     }
     if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
         operator(e.key)
+    }
+    if (e.key === 'Backspace') {
+        backspace()
     }
 }

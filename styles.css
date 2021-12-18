@@ -55,13 +55,15 @@ button:hover {
     background-color: lightgrey;
 }
 
-#clear {
+#topRow {
     display: grid;
-    justify-content: end; 
-    grid-template-columns: 83px;
-    padding-right: 15px; 
-    padding-top: 15px; 
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px; 
     text-align: right;
+    padding-left: 15px; 
+    padding-right: 15px; 
+    padding-top: 20px; 
 }
 
 #buttons {
