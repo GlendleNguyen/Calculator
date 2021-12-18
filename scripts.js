@@ -24,6 +24,7 @@ operatorButtons.forEach(button => {
 clearButton.addEventListener('click', clear)
 equalsButton.addEventListener('click', equals)
 decimalButton.addEventListener('click', appendDecimal)
+window.addEventListener('keydown', keyboardInput)
 
 // Clears all values
 function clear() {
@@ -54,7 +55,7 @@ function appendNumber(number) {
 
 // Updates the operator being used and calls equal function if conditions met
 function operator(sign) {
-      // move a 0 up and change the sign
+    // move a 0 up and change the sign
     if (currentValue.value == '' && previousValues.value == '') {
         previousValues.value += '0'
         currentOperator = sign
@@ -116,5 +117,21 @@ function divide(a, b) {
         clear
     } else {
         return a / b
+    }
+}
+
+/** Extension to add keyboard input */
+function keyboardInput(e) {
+    if (e.key >= 0 && e.key <= 9) {
+        appendNumber(e.key)
+    }
+    if (e.key === '.') {
+        appendDecimal()
+    }
+    if (e.key === '=' || e.key === 'Enter') {
+        equals()
+    }
+    if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+        operator(e.key)
     }
 }

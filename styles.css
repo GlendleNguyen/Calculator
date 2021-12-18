@@ -29,6 +29,10 @@ html {
     padding-left: 15px; 
 }
 
+#topline {
+    display: flex;
+}
+
 #previousScreen {
     border-bottom: none;
     font-size: 1.5rem;
