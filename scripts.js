@@ -116,7 +116,7 @@ function multiply(a, b) {
 function divide(a, b) {
     if (b == 0) {
         console.log("dividing by 0")
-        clear
+        clear()
     } else {
         return a / b
     }
