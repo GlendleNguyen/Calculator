@@ -1,5 +1,11 @@
+/** 
+ * Declare Variables 
+ * */
 let currentOperator = null
 
+/**
+ * Constants
+ */
 const numberButtons = document.querySelectorAll('[data-number]')
 const operatorButtons = document.querySelectorAll('[data-operator]')
 const equalsButton = document.getElementById('equals')
@@ -98,21 +104,24 @@ function equals() {
             currentValue.value = ''
             break
     }
-
 }
 
+// Addition
 function add(a, b) {
     return a + b
 }
 
+// Subtraction
 function minus(a, b) {
     return a - b
 }
 
+// Multiplication
 function multiply(a, b) {
     return a * b
 }
 
+// Division
 function divide(a, b) {
     if (b == 0) {
         console.log("dividing by 0")
